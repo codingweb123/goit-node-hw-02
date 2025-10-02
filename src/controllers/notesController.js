@@ -2,8 +2,8 @@ import createHttpError from "http-errors"
 import { Note } from "../models/note.js"
 
 export const getAllNotes = async (req, res) => {
-	const students = await Note.find()
-	res.status(200).json(students)
+	const notes = await Note.find()
+	res.status(200).json(notes)
 }
 
 export const getNoteById = async (req, res) => {
@@ -18,8 +18,8 @@ export const getNoteById = async (req, res) => {
 }
 
 export const createNote = async (req, res) => {
-	const student = await Note.create(req.body)
-	res.status(201).json(student)
+	const note = await Note.create(req.body)
+	res.status(201).json(note)
 }
 
 export const deleteNote = async (req, res) => {
@@ -35,7 +35,7 @@ export const deleteNote = async (req, res) => {
 	res.status(200).json(note)
 }
 
-export const patchNote = async (req, res) => {
+export const updateNote = async (req, res) => {
 	const { noteId } = req.params
 	const note = await Note.findOneAndUpdate(
 		{
